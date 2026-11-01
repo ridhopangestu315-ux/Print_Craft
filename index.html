@@ -21,22 +21,6 @@
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
-    <!-- BAGIAN PENGUMUMAN PROMO -->
-    <!-- Bagian ini menampilkan penawaran dan informasi kontak singkat. -->
-    <div class="bg-merek-gelap text-white text-xs py-2 px-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="bg-merek-magenta px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Promo</span>
-                <span class="truncate">Diskon 15% untuk pemesanan seragam & merchandise kantor bulan ini!</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-4 text-zinc-300">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-[10px] text-merek-jingga"></i> +62 812-3456-7890</span>
-                <span>|</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-[10px] text-merek-koral"></i> Jakarta & Surabaya</span>
-            </div>
-        </div>
-    </div>
-
     <!-- BAGIAN NAVIGASI UTAMA WEBSITE -->
     <!-- Header menghubungkan logo, menu, akun, dan keranjang dengan halaman lain. -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-100 transition-all">
@@ -255,7 +239,7 @@
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
                         
                         <!-- Kategori tumbler kustom -->
-                        <div onclick="aplikasi.saringKatalog('tumbler')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('tumbler')" data-jenis-kategori="tumbler" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-mug-hot"></i>
                             </div>
@@ -264,7 +248,7 @@
                         </div>
 
                         <!-- Kategori kartu identitas -->
-                        <div onclick="aplikasi.saringKatalog('idcard')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('idcard')" data-jenis-kategori="idcard" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-rose-100 text-merek-koral flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-id-card"></i>
                             </div>
@@ -273,7 +257,7 @@
                         </div>
 
                         <!-- Kategori kartu e-money -->
-                        <div onclick="aplikasi.saringKatalog('emoney')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('emoney')" data-jenis-kategori="emoney" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-orange-100 text-merek-jingga flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-credit-card"></i>
                             </div>
@@ -282,7 +266,7 @@
                         </div>
 
                         <!-- Kategori kaos -->
-                        <div onclick="aplikasi.saringKatalog('kaos')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('kaos')" data-jenis-kategori="kaos" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-shirt"></i>
                             </div>
@@ -291,7 +275,7 @@
                         </div>
 
                         <!-- Kategori lanyard -->
-                        <div onclick="aplikasi.saringKatalog('lanyard')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('lanyard')" data-jenis-kategori="lanyard" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-rose-100 text-merek-koral flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-ribbon"></i>
                             </div>
@@ -300,7 +284,7 @@
                         </div>
 
                         <!-- Kategori seragam dan PDH -->
-                        <div onclick="aplikasi.saringKatalog('seragam')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                        <div onclick="aplikasi.saringKatalog('seragam')" data-jenis-kategori="seragam" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
                             <div class="w-16 h-16 rounded-2xl bg-orange-100 text-merek-jingga flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
@@ -309,7 +293,7 @@
                         </div>
 
                         <!-- Kategori jaket kustom -->
-                        <div onclick="aplikasi.saringKatalog('jaket')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center col-span-2 sm:col-span-1">
+                        <div onclick="aplikasi.saringKatalog('jaket')" data-jenis-kategori="jaket" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center col-span-2 sm:col-span-1">
                             <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
                                 <i class="fa-solid fa-vest"></i>
                             </div>
