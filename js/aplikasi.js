@@ -250,10 +250,6 @@
 
             saringKatalog: function(jenisKategori) {
                 this.tampilkanHalaman('catalog');
-
-                document.querySelectorAll('#categories .kartu-kategori').forEach(kartu => {
-                    kartu.classList.toggle('kategori-aktif', kartu.dataset.jenisKategori === jenisKategori);
-                });
                 
                 // update filter buttons UI
                 document.querySelectorAll('.tombol-filter-katalog').forEach(tombol => {

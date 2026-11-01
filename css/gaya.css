@@ -463,28 +463,26 @@ body > div:first-child > .max-w-7xl { max-width: 1520px; }
     height: 80px;
     margin-bottom: 12px;
     border-radius: 20px;
+    color: var(--warna-gelap) !important;
     transition: background-color .2s ease, color .2s ease;
 }
 
 #categories .kartu-kategori h3 { font-size: 1rem; line-height: 1.35; transition: color .2s ease; }
 #categories .kartu-kategori > span { margin-top: 4px; font-size: .8rem; }
 
-#categories .kartu-kategori:hover,
-#categories .kartu-kategori.kategori-aktif {
+#categories .kartu-kategori:hover {
     border-color: var(--warna-magenta) !important;
     background: #fff !important;
     box-shadow: 0 8px 22px rgba(24, 24, 27, .06);
     transform: translateY(-3px);
 }
 
-#categories .kartu-kategori:hover > div:first-child,
-#categories .kartu-kategori.kategori-aktif > div:first-child {
+#categories .kartu-kategori:hover > div:first-child {
     background: var(--gradien-merek) !important;
     color: #fff !important;
 }
 
-#categories .kartu-kategori:hover h3,
-#categories .kartu-kategori.kategori-aktif h3 {
+#categories .kartu-kategori:hover h3 {
     color: var(--warna-magenta) !important;
 }
 
