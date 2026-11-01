@@ -1288,7 +1288,7 @@
                 if (keadaanAplikasi.penggunaAktif.sedangMasuk) {
                     wadah.innerHTML = `
                         <button onclick="aplikasi.tampilkanHalaman('customer-dashboard')" class="flex items-center gap-2 p-1.5 pr-3 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 transition">
-                            <span class="w-7 h-7 rounded-full bg-gradien-merek text-white font-bold text-xs flex items-center justify-center">AD</span>
+                            <img src="assets/gambar/profile.png" alt="Foto profil pelanggan" class="w-7 h-7 rounded-full object-cover border border-white">
                             <span class="text-xs font-bold hidden sm:inline">Akun Saya</span>
                         </button>
                     `;
