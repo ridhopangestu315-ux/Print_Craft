@@ -997,9 +997,9 @@
                     const tombol = document.getElementById('adm-tab-' + kunci);
                     if (tombol) {
                         if (kunci === kunciTab) {
-                            tombol.className = "w-full text-left px-4 py-3 rounded-xl font-bold text-sm bg-gradien-merek text-white flex items-center gap-3";
+                            tombol.className = "admin-menu-button w-full text-left px-4 py-3 rounded-xl font-bold text-sm bg-gradien-merek text-white flex items-center gap-3";
                         } else {
-                            tombol.className = "w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center justify-between";
+                            tombol.className = "admin-menu-button w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center justify-between";
                         }
                     }
                 });
