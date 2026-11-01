@@ -911,6 +911,12 @@ footer .pt-8 { padding-top: 30px !important; }
 @media (max-width: 767px) {
     body { min-width: 320px; }
 
+    main,
+    #view-home,
+    #view-catalog,
+    #view-customer-dashboard,
+    #view-admin-dashboard { width: 100%; max-width: 100%; min-width: 0; }
+
     body > div:first-child { min-height: 38px; }
     body > div:first-child .max-w-7xl { gap: 8px; }
     body > div:first-child .max-w-7xl > div:first-child { min-width: 0; gap: 8px; }
@@ -956,7 +962,7 @@ footer .pt-8 { padding-top: 30px !important; }
     .kartu-produk > div:nth-child(2) > div:last-child > div:last-child { gap: 5px; }
     .kartu-produk > div:nth-child(2) > div:last-child button { min-height: 40px; padding-inline: 9px !important; }
 
-    #view-catalog .max-w-7xl { min-width: 0; }
+    #view-catalog > .max-w-7xl { width: 100%; max-width: 100%; min-width: 0; padding-inline: 0 !important; }
     #view-catalog h1 { font-size: clamp(1.45rem, 6vw, 1.9rem) !important; line-height: 1.2; }
     #view-catalog .flex.items-center.gap-2.overflow-x-auto { width: 100%; padding-bottom: 10px; }
     #view-catalog .tombol-filter-katalog { min-height: 44px; }
@@ -993,7 +999,7 @@ footer .pt-8 { padding-top: 30px !important; }
     #auth-modal input { min-height: 44px; font-size: .9rem !important; }
     #auth-modal button:not([aria-label]) { min-height: 44px; }
 
-    #view-customer-dashboard > .max-w-7xl { padding-inline: 16px; }
+    #view-customer-dashboard > .max-w-7xl { width: 100%; max-width: 100%; padding-inline: 16px !important; }
     #view-customer-dashboard > .max-w-7xl > div:first-child { padding: 16px !important; }
     #view-customer-dashboard > .max-w-7xl > div:first-child > div:last-child { flex-wrap: wrap; }
     #view-customer-dashboard > .max-w-7xl > .flex.border-b { gap: 18px; overflow-x: auto; white-space: nowrap; }
