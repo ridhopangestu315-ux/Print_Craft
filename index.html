@@ -1,0 +1,1224 @@
+﻿<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRINT CRAFT - Cetak Kesanmu dalam Warna | Percetakan & Merchandise Custom</title>
+    
+    <!-- Sumber font Plus Jakarta Sans dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Sumber ikon dari Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Konfigurasi dan pemuatan Tailwind CSS dari CDN -->
+    <script src="js/konfigurasi-tailwind.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="css/gaya.css">
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- BAGIAN PENGUMUMAN PROMO -->
+    <!-- Bagian ini menampilkan penawaran dan informasi kontak singkat. -->
+    <div class="bg-merek-gelap text-white text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="bg-merek-magenta px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Promo</span>
+                <span class="truncate">Diskon 15% untuk pemesanan seragam & merchandise kantor bulan ini!</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4 text-zinc-300">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-[10px] text-merek-jingga"></i> +62 812-3456-7890</span>
+                <span>|</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-[10px] text-merek-koral"></i> Jakarta & Surabaya</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- BAGIAN NAVIGASI UTAMA WEBSITE -->
+    <!-- Header menghubungkan logo, menu, akun, dan keranjang dengan halaman lain. -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Print Craft -->
+                <a href="javascript:void(0)" onclick="aplikasi.tampilkanHalaman('home')" class="flex items-center gap-3 group">
+                    <div class="wadah-logo" aria-label="Area untuk logo asli Print Craft"><i class="fa-regular fa-image" aria-hidden="true"></i></div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-merek-gelap flex items-center gap-1">
+                            PRINT<span class="teks-gradien">CRAFT</span>
+                        </span>
+                        <p class="text-[10px] text-merek-redup tracking-wider font-semibold -mt-1 uppercase">Cetak Kesanmu dalam Warna</p>
+                    </div>
+                </a>
+
+                <!-- Menu navigasi untuk layar komputer -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-zinc-700">
+                    <button onclick="aplikasi.tampilkanHalaman('home')" class="tautan-navigasi hover:text-merek-magenta transition-colors py-2 navigasi-aktif font-semibold text-merek-magenta" id="nav-home">Beranda</button>
+                    <button onclick="aplikasi.tampilkanHalaman('catalog')" class="tautan-navigasi hover:text-merek-magenta transition-colors py-2" id="nav-catalog">Katalog Produk</button>
+                    <button onclick="aplikasi.gulirKeBagian('categories')" class="tautan-navigasi hover:text-merek-magenta transition-colors py-2">Kategori</button>
+                    <button onclick="aplikasi.gulirKeBagian('features')" class="tautan-navigasi hover:text-merek-magenta transition-colors py-2">Tentang Kami</button>
+                    <button onclick="aplikasi.bukaRuangObrolan()" class="tautan-navigasi hover:text-merek-magenta transition-colors py-2">Hubungi Kami</button>
+                </nav>
+
+                <!-- Tombol aksi dan pintasan peran pengguna -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    
+                    <!-- Tombol pintasan untuk membuka dashboard admin -->
+                    <button onclick="aplikasi.ubahTampilanAdmin()" title="Buka Dashboard Admin" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-zinc-100 hover:bg-zinc-200 text-zinc-700 transition">
+                        <i class="fa-solid fa-gauge-high text-merek-magenta"></i>
+                        <span id="role-switch-label">Portal Admin</span>
+                    </button>
+
+                    <!-- Tombol keranjang belanja dan jumlah barang -->
+                    <button onclick="aplikasi.bukaKeranjang()" class="relative p-2.5 rounded-full text-zinc-700 hover:text-merek-magenta hover:bg-pink-50 transition" aria-label="Keranjang Belanja">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-counter" class="absolute -top-1 -right-1 bg-merek-koral text-white font-bold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+                    </button>
+
+                    <!-- Area akun pengguna untuk masuk atau melihat akun -->
+                    <div id="user-nav-action">
+                        <button onclick="aplikasi.bukaFormMasuk()" class="tombol-gradien px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="hidden sm:inline">Masuk / Daftar</span>
+                        </button>
+                    </div>
+
+                    <!-- Tombol untuk membuka menu pada ponsel -->
+                    <button onclick="aplikasi.ubahMenuPonsel()" aria-label="Buka menu navigasi" class="lg:hidden p-2 text-zinc-700 hover:text-merek-magenta focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="mobile-menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu navigasi yang ditampilkan pada ponsel -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-zinc-100 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg">
+            <button onclick="aplikasi.tampilkanHalaman('home'); aplikasi.ubahMenuPonsel();" class="block w-full text-left py-2 font-medium text-zinc-800 hover:text-merek-magenta">Beranda</button>
+            <button onclick="aplikasi.tampilkanHalaman('catalog'); aplikasi.ubahMenuPonsel();" class="block w-full text-left py-2 font-medium text-zinc-800 hover:text-merek-magenta">Katalog Produk</button>
+            <button onclick="aplikasi.gulirKeBagian('categories'); aplikasi.ubahMenuPonsel();" class="block w-full text-left py-2 font-medium text-zinc-800 hover:text-merek-magenta">Kategori</button>
+            <button onclick="aplikasi.gulirKeBagian('features'); aplikasi.ubahMenuPonsel();" class="block w-full text-left py-2 font-medium text-zinc-800 hover:text-merek-magenta">Tentang Kami</button>
+            <button onclick="aplikasi.bukaRuangObrolan(); aplikasi.ubahMenuPonsel();" class="block w-full text-left py-2 font-medium text-zinc-800 hover:text-merek-magenta">Hubungi Kami</button>
+            <div class="pt-2 border-t border-zinc-100 flex flex-col gap-2">
+                <button onclick="aplikasi.ubahTampilanAdmin(); aplikasi.ubahMenuPonsel();" class="w-full text-left py-2 text-sm font-semibold text-merek-koral">
+                    <i class="fa-solid fa-gauge-high mr-2"></i> Buka Portal Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BAGIAN UTAMA KONTEN WEBSITE -->
+    <!-- Isi utama berganti sesuai halaman yang dipilih pengunjung. -->
+    <main class="flex-grow">
+        
+        <!-- ============================================== -->
+        <!-- BAGIAN BERANDA -->
+        <!-- ============================================== -->
+        <div id="view-home" class="tampilan-halaman">
+            
+            <!-- BAGIAN UTAMA BERANDA YANG PERTAMA KALI DILIHAT PENGUNJUNG -->
+            <section class="bagian-pembuka relative overflow-hidden pt-10 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-pink-50/40 via-white to-white">
+                <div class="absolute -top-32 -right-32 w-96 h-96 bg-merek-merah-muda/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute top-1/2 -left-32 w-96 h-96 bg-merek-jingga/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Judul, penjelasan, dan tombol utama beranda -->
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-100/70 border border-merek-merah-muda/20 text-merek-magenta text-xs font-bold tracking-wide">
+                                <i class="fa-solid fa-wand-magic-sparkles text-merek-koral"></i>
+                                Jasa Percetakan & Custom Merchandise No. 1
+                            </div>
+
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-merek-gelap leading-[1.15] tracking-tight">
+                                Wujudkan Ide Kreatifmu Bersama <span class="teks-gradien">Print Craft</span>
+                            </h1>
+
+                            <p class="text-base sm:text-lg text-zinc-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                                Dari tumbler premium, ID card instansi, kartu e-money custom, hingga seragam & jaket perusahaan. Kami hadirkan hasil cetak berpresisi tinggi dengan warna yang hidup dan memukau.
+                            </p>
+
+                            <!-- Tombol ajakan untuk mulai berbelanja atau melihat produk -->
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                                <button onclick="aplikasi.tampilkanHalaman('catalog')" class="tombol-gradien px-8 py-3.5 rounded-xl font-bold text-base shadow-cahaya-merek flex items-center justify-center gap-2.5">
+                                    <span>Mulai Belanja</span>
+                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </button>
+                                <button onclick="aplikasi.gulirKeBagian('featured-products')" class="px-8 py-3.5 rounded-xl font-bold text-base text-zinc-700 bg-white border border-zinc-200 hover:border-merek-magenta hover:text-merek-magenta transition shadow-sm flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                    <span>Lihat Produk Unggulan</span>
+                                </button>
+                            </div>
+
+                            <!-- Ringkasan jumlah produk, kepuasan pelanggan, dan layanan -->
+                            <div class="pt-8 border-t border-zinc-100 grid grid-cols-3 gap-4 text-center lg:text-left">
+                                <div>
+                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">50.000+</h4>
+                                    <p class="text-xs text-zinc-500 font-medium">Produk Dicetak</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">99.8%</h4>
+                                    <p class="text-xs text-zinc-500 font-medium">Klien Puas</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">1 Hari</h4>
+                                    <p class="text-xs text-zinc-500 font-medium">Layanan Express</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contoh tampilan produk unggulan di sisi beranda -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                <!-- Hiasan latar untuk kartu contoh produk -->
+                                <div class="absolute -inset-2 bg-gradien-merek rounded-3xl opacity-20 blur-xl transform rotate-1"></div>
+                                
+                                <div class="relative bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-zinc-100 shadow-xl space-y-4">
+                                    <div class="flex items-center justify-between pb-3 border-b border-zinc-100">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                                            <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                            <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                                        </div>
+                                        <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Mockup Studio</span>
+                                    </div>
+
+                                    <!-- Contoh empat produk yang dapat dipilih untuk melihat kustomisasi -->
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div onclick="aplikasi.bukaPengaturanProduk(1)" class="kartu-mockup group cursor-pointer bg-zinc-50 rounded-2xl p-3 border border-zinc-100 hover:border-merek-merah-muda transition overflow-hidden">
+                                            <div class="area-gambar-mockup h-28 rounded-xl overflow-hidden mb-2 bg-white flex items-center justify-center relative">
+                                                <img src="assets/gambar/placeholder-produk.svg" alt="Tumbler kustom" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                                <span class="absolute bottom-1 right-1 text-[9px] bg-merek-gelap/80 text-white px-1.5 py-0.5 rounded font-bold">Tumbler</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-zinc-800 truncate">Tumbler Laser UV</p>
+                                            <p class="text-[11px] text-merek-koral font-extrabold">Rp 75.000</p>
+                                        </div>
+
+                                        <div onclick="aplikasi.bukaPengaturanProduk(4)" class="kartu-mockup group cursor-pointer bg-zinc-50 rounded-2xl p-3 border border-zinc-100 hover:border-merek-merah-muda transition overflow-hidden">
+                                            <div class="area-gambar-mockup h-28 rounded-xl overflow-hidden mb-2 bg-white flex items-center justify-center relative">
+                                                <img src="assets/gambar/placeholder-produk.svg" alt="Kaos Cotton Combed" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                                <span class="absolute bottom-1 right-1 text-[9px] bg-merek-gelap/80 text-white px-1.5 py-0.5 rounded font-bold">Kaos</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-zinc-800 truncate">Cotton Combed 30s</p>
+                                            <p class="text-[11px] text-merek-koral font-extrabold">Rp 65.000</p>
+                                        </div>
+
+                                        <div onclick="aplikasi.bukaPengaturanProduk(2)" class="kartu-mockup group cursor-pointer bg-zinc-50 rounded-2xl p-3 border border-zinc-100 hover:border-merek-merah-muda transition overflow-hidden">
+                                            <div class="area-gambar-mockup h-28 rounded-xl overflow-hidden mb-2 bg-white flex items-center justify-center relative">
+                                                <img src="assets/gambar/placeholder-produk.svg" alt="Kartu identitas kustom" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                                <span class="absolute bottom-1 right-1 text-[9px] bg-merek-gelap/80 text-white px-1.5 py-0.5 rounded font-bold">ID Card</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-zinc-800 truncate">PVC Card Ultra-HD</p>
+                                            <p class="text-[11px] text-merek-koral font-extrabold">Rp 8.500</p>
+                                        </div>
+
+                                        <div onclick="aplikasi.bukaPengaturanProduk(3)" class="kartu-mockup group cursor-pointer bg-zinc-50 rounded-2xl p-3 border border-zinc-100 hover:border-merek-merah-muda transition overflow-hidden">
+                                            <div class="area-gambar-mockup h-28 rounded-xl overflow-hidden mb-2 bg-white flex items-center justify-center relative">
+                                                <img src="assets/gambar/placeholder-produk.svg" alt="Kartu e-money kustom" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                                <span class="absolute bottom-1 right-1 text-[9px] bg-merek-gelap/80 text-white px-1.5 py-0.5 rounded font-bold">E-Money</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-zinc-800 truncate">Kartu Tol Cetak 2 Sisi</p>
+                                            <p class="text-[11px] text-merek-koral font-extrabold">Rp 35.000</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Informasi singkat tentang layanan proofing desain -->
+                                    <div class="p-3 bg-gradient-to-r from-pink-500/10 via-rose-500/10 to-orange-500/10 rounded-xl flex items-center justify-between border border-merek-merah-muda/20">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-8 h-8 rounded-lg bg-gradien-merek flex items-center justify-center text-white text-xs">
+                                                <i class="fa-solid fa-gift"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-bold text-zinc-800">Gratis Proofing Desain</p>
+                                                <p class="text-[10px] text-zinc-500">Preview hasil sebelum produksi massal</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-bold text-merek-magenta">100% Free</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAGIAN KATEGORI PRODUK -->
+            <section id="categories" class="py-16 bg-white border-y border-zinc-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                        <div>
+                            <span class="text-xs font-extrabold tracking-widest text-merek-magenta uppercase">Pilihan Kategori</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-merek-gelap mt-1">Solusi Kebutuhan Cetak Anda</h2>
+                        </div>
+                        <p class="text-sm text-zinc-500 mt-2 md:mt-0 max-w-md">Pilih kategori spesifik untuk mengatur kustomisasi ukuran, materi bahan, hingga upload desain.</p>
+                    </div>
+
+                    <!-- Daftar tujuh kategori produk -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+                        
+                        <!-- Kategori tumbler kustom -->
+                        <div onclick="aplikasi.saringKatalog('tumbler')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Tumbler Custom</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">12 Varian</span>
+                        </div>
+
+                        <!-- Kategori kartu identitas -->
+                        <div onclick="aplikasi.saringKatalog('idcard')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-rose-100 text-merek-koral flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Kartu ID Card</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">PVC Pro</span>
+                        </div>
+
+                        <!-- Kategori kartu e-money -->
+                        <div onclick="aplikasi.saringKatalog('emoney')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-orange-100 text-merek-jingga flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-credit-card"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">E-Money / Tol</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">RFID / Chip</span>
+                        </div>
+
+                        <!-- Kategori kaos -->
+                        <div onclick="aplikasi.saringKatalog('kaos')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-shirt"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Kaos Combed</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">Sablon DTF</span>
+                        </div>
+
+                        <!-- Kategori lanyard -->
+                        <div onclick="aplikasi.saringKatalog('lanyard')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-rose-100 text-merek-koral flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-ribbon"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Lanyard</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">Tissue / Nylon</span>
+                        </div>
+
+                        <!-- Kategori seragam dan PDH -->
+                        <div onclick="aplikasi.saringKatalog('seragam')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-orange-100 text-merek-jingga flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Seragam / PDH</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">Bordir Komputer</span>
+                        </div>
+
+                        <!-- Kategori jaket kustom -->
+                        <div onclick="aplikasi.saringKatalog('jaket')" class="kartu-kategori cursor-pointer group p-4 rounded-2xl bg-zinc-50 hover:bg-white border border-zinc-100 hover:border-merek-magenta hover:shadow-bayangan-kartu-lembut transition-all duration-300 flex flex-col items-center text-center col-span-2 sm:col-span-1">
+                            <div class="w-16 h-16 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-3 group-hover:scale-110 group-hover:bg-gradien-merek group-hover:text-white transition-all">
+                                <i class="fa-solid fa-vest"></i>
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-bold text-zinc-800 group-hover:text-merek-magenta">Jaket Custom</h3>
+                            <span class="text-[11px] text-zinc-400 mt-1">Hoodie & Bomber</span>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAGIAN DAFTAR PRODUK UNGGULAN -->
+            <section id="featured-products" class="py-16 bg-zinc-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col sm:flex-row items-center justify-between mb-10">
+                        <div>
+                            <span class="text-xs font-extrabold tracking-widest text-merek-koral uppercase">Best Seller</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-merek-gelap mt-1">Produk Unggulan Terfavorit</h2>
+                        </div>
+                        <button onclick="aplikasi.tampilkanHalaman('catalog')" class="mt-4 sm:mt-0 text-sm font-bold text-merek-magenta hover:text-merek-gelap flex items-center gap-1.5 transition">
+                            Lihat Semua Katalog <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Wadah daftar produk yang diisi oleh JavaScript -->
+                    <div id="featured-product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Daftar produk ini dibuat oleh fungsi tampilkanProduk() di JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAGIAN KEUNGGULAN PRINT CRAFT -->
+            <section id="features" class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-xs font-extrabold tracking-widest text-merek-magenta uppercase">Kenapa Memilih Kami</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-merek-gelap mt-2">Standar Kualitas Print Craft</h2>
+                        <p class="text-zinc-500 mt-3 text-sm sm:text-base">Dedikasi kami untuk memberikan pengalaman cetak dan merchandise kustom terbaik bagi brand maupun individu.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <!-- Keunggulan hasil cetak -->
+                        <div class="kartu-keunggulan p-6 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-pink-200 transition-all hover:shadow-bayangan-kartu-lembut">
+                            <div class="w-14 h-14 rounded-2xl bg-pink-100 text-merek-magenta flex items-center justify-center text-2xl mb-5 shadow-sm">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-merek-gelap mb-2">Hasil Cetak Berkualitas</h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed">Menggunakan tinta original dan mesin cetak UV & Digital Press mutakhir untuk ketajaman warna maksimal yang tahan lama.</p>
+                        </div>
+
+                        <!-- Keunggulan desain -->
+                        <div class="kartu-keunggulan p-6 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-pink-200 transition-all hover:shadow-bayangan-kartu-lembut">
+                            <div class="w-14 h-14 rounded-2xl bg-rose-100 text-merek-koral flex items-center justify-center text-2xl mb-5 shadow-sm">
+                                <i class="fa-solid fa-bezier-curve"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-merek-gelap mb-2">Desain Menarik & Eksklusif</h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed">Pilihan template modern dan tim desainer in-house yang siap membantu menata layout merchandise Anda secara gratis.</p>
+                        </div>
+
+                        <!-- Keunggulan pelayanan -->
+                        <div class="kartu-keunggulan p-6 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-pink-200 transition-all hover:shadow-bayangan-kartu-lembut">
+                            <div class="w-14 h-14 rounded-2xl bg-orange-100 text-merek-jingga flex items-center justify-center text-2xl mb-5 shadow-sm">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-merek-gelap mb-2">Pelayanan Responsif</h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed">Customer care sigap melayani tanya jawab estimasi waktu, konsultasi materi, hingga update status pesanan real-time.</p>
+                        </div>
+
+                        <!-- Keunggulan pilihan produksi -->
+                        <div class="kartu-keunggulan p-6 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-pink-200 transition-all hover:shadow-bayangan-kartu-lembut">
+                            <div class="w-14 h-14 rounded-2xl bg-zinc-100 text-zinc-800 flex items-center justify-center text-2xl mb-5 shadow-sm">
+                                <i class="fa-solid fa-cubes-stacked"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-merek-gelap mb-2">Pilihan Produksi Lengkap</h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed">Dari kebutuhan satuan untuk kado hingga pengadaan seragam & souvenir ribuan pcs untuk instansi dan korporasi besar.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAGIAN AJAKAN UNTUK MEMESAN -->
+            <section class="py-12 bg-zinc-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="banner-promosi rounded-3xl bg-gradien-merek p-8 sm:p-12 text-white shadow-cahaya-merek-besar flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+                        <div class="relative z-10 space-y-2 text-center md:text-left">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Custom Tanpa Ribet</span>
+                            <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Punya Desain Sendiri? Cetak Sekarang!</h3>
+                            <p class="text-white/90 text-sm sm:text-base max-w-xl">Upload artwork Anda, pilih spesifikasi yang diinginkan, dan tim Print Craft akan memprosesnya hingga tuntas.</p>
+                        </div>
+                        <div class="relative z-10 flex flex-col sm:flex-row gap-3">
+                            <button onclick="aplikasi.tampilkanHalaman('catalog')" class="bg-white text-merek-magenta hover:bg-zinc-100 font-extrabold px-6 py-3.5 rounded-xl text-sm transition shadow-md">
+                                Buka Katalog & Pesan
+                            </button>
+                            <button onclick="aplikasi.bukaRuangObrolan()" class="bg-merek-gelap/30 hover:bg-merek-gelap/40 border border-white/30 text-white font-bold px-6 py-3.5 rounded-xl text-sm transition">
+                                Konsultasi Gratis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BAGIAN KATALOG PRODUK -->
+        <!-- ============================================== -->
+        <div id="view-catalog" class="tampilan-halaman hidden py-10 bg-zinc-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Judul dan pengantar katalog -->
+                <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <a href="javascript:void(0)" onclick="aplikasi.tampilkanHalaman('home')" class="text-xs font-bold text-merek-magenta hover:underline mb-2 inline-flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+                        </a>
+                        <h1 class="text-3xl font-extrabold text-merek-gelap">Katalog Produk Merchandise & Cetak</h1>
+                        <p class="text-sm text-zinc-500">Pilih salah satu produk untuk mengonfigurasi opsi spesifikasi & kustomisasi.</p>
+                    </div>
+
+                    <!-- Tombol untuk menyaring produk berdasarkan kategori -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 bilah-gulir-kustom">
+                        <button onclick="aplikasi.saringKatalog('all')" id="filter-all" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-merek-magenta text-white">Semua</button>
+                        <button onclick="aplikasi.saringKatalog('tumbler')" id="filter-tumbler" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">Tumbler</button>
+                        <button onclick="aplikasi.saringKatalog('idcard')" id="filter-idcard" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">ID Card</button>
+                        <button onclick="aplikasi.saringKatalog('emoney')" id="filter-emoney" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">E-Money</button>
+                        <button onclick="aplikasi.saringKatalog('kaos')" id="filter-kaos" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">Kaos</button>
+                        <button onclick="aplikasi.saringKatalog('lanyard')" id="filter-lanyard" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">Lanyard</button>
+                        <button onclick="aplikasi.saringKatalog('seragam')" id="filter-seragam" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">Seragam/PDH</button>
+                        <button onclick="aplikasi.saringKatalog('jaket')" id="filter-jaket" class="tombol-filter-katalog px-4 py-2 rounded-xl text-xs font-bold bg-white text-zinc-600 border border-zinc-200 hover:border-merek-merah-muda">Jaket</button>
+                    </div>
+                </div>
+
+                <!-- Wadah daftar produk katalog yang diisi oleh JavaScript -->
+                <div id="catalog-product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Daftar produk akan ditampilkan oleh JavaScript -->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BAGIAN DASHBOARD PELANGGAN -->
+        <!-- ============================================== -->
+        <div id="view-customer-dashboard" class="tampilan-halaman hidden py-10 bg-zinc-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Informasi akun dan tombol keluar -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gradien-merek text-white flex items-center justify-center text-2xl font-black shadow-cahaya-merek">
+                            AD
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h1 class="text-xl font-extrabold text-merek-gelap" id="user-display-name">Ahmad Dhani</h1>
+                                <span class="bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2 py-0.5 rounded-full">Pelanggan Aktif</span>
+                            </div>
+                            <p class="text-xs text-zinc-500 mt-0.5">ahmad.customer@gmail.com • +62 812-9876-5432</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="aplikasi.bukaRuangObrolan()" class="px-4 py-2 bg-pink-50 text-merek-magenta hover:bg-pink-100 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-regular fa-comment-dots"></i> Chat Bantuan
+                        </button>
+                        <button onclick="aplikasi.keluarAkun()" class="px-4 py-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab untuk berpindah antara pesanan, profil, dan chat -->
+                <div class="flex border-b border-zinc-200 mb-6 gap-6 text-sm font-bold">
+                    <button onclick="aplikasi.ubahTabPelanggan('orders')" id="cust-tab-orders" class="pb-3 border-b-2 border-merek-magenta text-merek-magenta">Riwayat Pesanan</button>
+                    <button onclick="aplikasi.ubahTabPelanggan('profile')" id="cust-tab-profile" class="pb-3 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800">Profil & Alamat</button>
+                    <button onclick="aplikasi.ubahTabPelanggan('chats')" id="cust-tab-chats" class="pb-3 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800">Riwayat Chat</button>
+                </div>
+
+                <!-- Konten tab riwayat pesanan -->
+                <div id="customer-tab-orders-content" class="space-y-4">
+                    <div id="customer-orders-container" class="space-y-4">
+                        <!-- Konten bagian ini diisi oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Konten tab profil dan alamat pelanggan -->
+                <div id="customer-tab-profile-content" class="hidden bg-white rounded-2xl p-6 border border-zinc-200">
+                    <h3 class="text-lg font-bold text-merek-gelap mb-4">Pengaturan Akun & Alamat Pengiriman</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-600 mb-1">Nama Lengkap</label>
+                            <input type="text" value="Ahmad Dhani" class="w-full text-sm p-3 rounded-xl border border-zinc-200 focus:border-merek-magenta focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-600 mb-1">Nomor WhatsApp</label>
+                            <input type="tel" value="081298765432" class="w-full text-sm p-3 rounded-xl border border-zinc-200 focus:border-merek-magenta focus:outline-none">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-zinc-600 mb-1">Alamat Utama Pengiriman</label>
+                            <textarea rows="3" class="w-full text-sm p-3 rounded-xl border border-zinc-200 focus:border-merek-magenta focus:outline-none">Jl. Kebon Jeruk Raya No. 42, RT 05 / RW 03, Jakarta Barat, DKI Jakarta 11530</textarea>
+                        </div>
+                        <div>
+                            <button class="tombol-gradien px-6 py-2.5 rounded-xl font-bold text-sm">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Konten tab riwayat percakapan -->
+                <div id="customer-tab-chats-content" class="hidden bg-white rounded-2xl p-6 border border-zinc-200">
+                    <h3 class="text-lg font-bold text-merek-gelap mb-3">Percakapan dengan Admin Print Craft</h3>
+                    <p class="text-xs text-zinc-500 mb-4">Semua pesan tersinkronisasi otomatis dengan tim operasional dan desain kami.</p>
+                    <div id="customer-chat-history" class="p-4 bg-zinc-50 rounded-xl space-y-3 max-h-80 overflow-y-auto mb-4 border border-zinc-100 bilah-gulir-kustom">
+                        <!-- Riwayat percakapan ditampilkan oleh JavaScript -->
+                    </div>
+                    <button onclick="aplikasi.bukaRuangObrolan()" class="tombol-gradien px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2">
+                        <i class="fa-regular fa-paper-plane"></i> Lanjutkan Percakapan
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BAGIAN DASHBOARD ADMIN -->
+        <!-- ============================================== -->
+        <div id="view-admin-dashboard" class="tampilan-halaman hidden py-6 bg-zinc-100 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Judul dashboard dan tombol kembali ke toko -->
+                <div class="flex items-center justify-between pb-6 border-b border-zinc-200">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-merek-magenta">Back-Office Management</span>
+                        <h1 class="text-2xl font-black text-merek-gelap flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-merek-koral"></i> Dashboard Admin Print Craft
+                        </h1>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Mode Admin Live
+                        </span>
+                        <button onclick="aplikasi.ubahTampilanAdmin()" class="px-4 py-2 bg-white border border-zinc-300 hover:bg-zinc-50 text-xs font-bold rounded-xl text-zinc-700">
+                            Kembali ke Toko
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+                    
+                    <!-- Menu samping untuk memilih bagian dashboard admin -->
+                    <div class="lg:col-span-3">
+                        <div class="bg-white rounded-2xl p-4 border border-zinc-200 shadow-sm space-y-1">
+                            <button onclick="aplikasi.ubahTabAdmin('overview')" id="adm-tab-overview" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm bg-gradien-merek text-white flex items-center gap-3">
+                                <i class="fa-solid fa-chart-pie w-4"></i> Ringkasan & Statistik
+                            </button>
+                            <button onclick="aplikasi.ubahTabAdmin('orders')" id="adm-tab-orders" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center justify-between">
+                                <span class="flex items-center gap-3"><i class="fa-solid fa-box-archive w-4"></i> Manajemen Pesanan</span>
+                                <span class="bg-merek-koral text-white text-[10px] px-2 py-0.5 rounded-full font-black" id="admin-badge-pending">3</span>
+                            </button>
+                            <button onclick="aplikasi.ubahTabAdmin('verification')" id="adm-tab-verification" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center gap-3">
+                                <i class="fa-solid fa-money-check-dollar w-4"></i> Verifikasi Bukti Bayar
+                            </button>
+                            <button onclick="aplikasi.ubahTabAdmin('products')" id="adm-tab-products" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center gap-3">
+                                <i class="fa-solid fa-tags w-4"></i> Produk & Harga
+                            </button>
+                            <button onclick="aplikasi.ubahTabAdmin('bank')" id="adm-tab-bank" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center gap-3">
+                                <i class="fa-solid fa-wallet w-4"></i> Rekening Pembayaran
+                            </button>
+                            <button onclick="aplikasi.ubahTabAdmin('chatmgt')" id="adm-tab-chatmgt" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm text-zinc-600 hover:bg-zinc-50 flex items-center gap-3">
+                                <i class="fa-solid fa-comments w-4"></i> Live Chat Pelanggan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Area konten yang berubah sesuai menu admin -->
+                    <div class="lg:col-span-9">
+
+                        <!-- BAGIAN RINGKASAN DASHBOARD ADMIN -->
+                        <div id="admin-tab-overview" class="tab-panel-admin space-y-6">
+                            <!-- Kartu ringkasan statistik pesanan dan pendapatan -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                                <div class="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm">
+                                    <span class="text-xs font-bold text-zinc-400">Total Pesanan</span>
+                                    <p class="text-2xl font-black text-merek-gelap mt-1" id="stat-total-orders">248</p>
+                                    <span class="text-[11px] text-emerald-600 font-bold"><i class="fa-solid fa-arrow-trend-up"></i> +12% bulan ini</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm">
+                                    <span class="text-xs font-bold text-zinc-400">Total Pendapatan</span>
+                                    <p class="text-xl font-black text-merek-magenta mt-1" id="stat-total-revenue">Rp 38.450.000</p>
+                                    <span class="text-[11px] text-emerald-600 font-bold">Terverifikasi</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm">
+                                    <span class="text-xs font-bold text-zinc-400">Pesanan Baru</span>
+                                    <p class="text-2xl font-black text-amber-500 mt-1" id="stat-new-orders">3</p>
+                                    <span class="text-[11px] text-zinc-400">Butuh verifikasi</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm">
+                                    <span class="text-xs font-bold text-zinc-400">Diproses</span>
+                                    <p class="text-2xl font-black text-blue-500 mt-1" id="stat-processing-orders">8</p>
+                                    <span class="text-[11px] text-zinc-400">Di tahap cetak</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm">
+                                    <span class="text-xs font-bold text-zinc-400">Selesai</span>
+                                    <p class="text-2xl font-black text-emerald-600 mt-1" id="stat-done-orders">237</p>
+                                    <span class="text-[11px] text-emerald-600 font-bold">Terkirim aman</span>
+                                </div>
+                            </div>
+
+                            <!-- Tabel pesanan terbaru dan pintasan pengelolaan -->
+                            <div class="bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-base font-extrabold text-merek-gelap">Pesanan Terbaru Membutuhkan Tindakan</h3>
+                                    <button onclick="aplikasi.ubahTabAdmin('orders')" class="text-xs font-bold text-merek-magenta hover:underline">Kelola Semua Pesanan</button>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-xs">
+                                        <thead class="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-bold">
+                                            <tr>
+                                                <th class="p-3">ID Pesanan</th>
+                                                <th class="p-3">Pelanggan</th>
+                                                <th class="p-3">Item Produk</th>
+                                                <th class="p-3">Total</th>
+                                                <th class="p-3">Status Bayar</th>
+                                                <th class="p-3 text-right">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-recent-orders-table" class="divide-y divide-zinc-100">
+                                            <!-- Isi tabel dibuat oleh JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BAGIAN PENGELOLAAN PESANAN -->
+                        <div id="admin-tab-orders-page" class="tab-panel-admin hidden space-y-4">
+                            <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
+                                <h3 class="text-lg font-bold text-merek-gelap mb-4">Daftar Lengkap Pesanan Pelanggan</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-xs">
+                                        <thead class="bg-zinc-50 text-zinc-500 uppercase font-bold border-b border-zinc-200">
+                                            <tr>
+                                                <th class="p-3">ID Pesanan</th>
+                                                <th class="p-3">Waktu</th>
+                                                <th class="p-3">Customer</th>
+                                                <th class="p-3">Detail Kustomisasi</th>
+                                                <th class="p-3">Total</th>
+                                                <th class="p-3">Status Produksi</th>
+                                                <th class="p-3 text-right">Update Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-full-orders-table" class="divide-y divide-zinc-100">
+                                            <!-- Baris pesanan ditampilkan oleh JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BAGIAN VERIFIKASI PEMBAYARAN -->
+                        <div id="admin-tab-verification-page" class="tab-panel-admin hidden space-y-4">
+                            <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
+                                <h3 class="text-lg font-bold text-merek-gelap mb-2">Verifikasi Bukti Transfer Manual</h3>
+                                <p class="text-xs text-zinc-500 mb-6">Tinjau mutasi dan foto bukti transfer yang diunggah oleh pelanggan untuk menyetujui atau menolak pesanan.</p>
+
+                                <div id="admin-verification-queue" class="space-y-4">
+                                    <!-- Daftar pembayaran dan tombol persetujuan dibuat oleh JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BAGIAN PRODUK DAN HARGA -->
+                        <div id="admin-tab-products-page" class="tab-panel-admin hidden space-y-4">
+                            <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-lg font-bold text-merek-gelap">Katalog Produk & Manajemen Harga</h3>
+                                    <span class="text-xs text-zinc-400">7 Kategori Aktif</span>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-xs">
+                                        <thead class="bg-zinc-50 text-zinc-500 uppercase font-bold border-b border-zinc-200">
+                                            <tr>
+                                                <th class="p-3">Foto</th>
+                                                <th class="p-3">Nama Produk</th>
+                                                <th class="p-3">Kategori</th>
+                                                <th class="p-3">Harga Satuan</th>
+                                                <th class="p-3">Status</th>
+                                                <th class="p-3 text-right">Opsi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-products-table" class="divide-y divide-zinc-100">
+                                            <!-- Isi tabel dibuat oleh JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BAGIAN PENGATURAN REKENING PEMBAYARAN -->
+                        <div id="admin-tab-bank-page" class="tab-panel-admin hidden space-y-4">
+                            <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
+                                <h3 class="text-lg font-bold text-merek-gelap mb-1">Pengaturan Rekening & E-Wallet Pembayaran</h3>
+                                <p class="text-xs text-zinc-500 mb-6">Nomor rekening ini akan tampil otomatis kepada pembeli saat proses checkout.</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+                                    <div class="p-4 rounded-xl border border-zinc-200">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-extrabold text-xs text-blue-700">Bank BCA</span>
+                                            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Aktif</span>
+                                        </div>
+                                        <input type="text" id="setting-bca" value="8420 1928 33 (PT PRINT CRAFT INDONESIA)" class="w-full text-xs p-2.5 rounded-lg border border-zinc-200">
+                                    </div>
+
+                                    <div class="p-4 rounded-xl border border-zinc-200">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-extrabold text-xs text-blue-900">Bank Mandiri</span>
+                                            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Aktif</span>
+                                        </div>
+                                        <input type="text" id="setting-mandiri" value="1410 0982 7162 (PT PRINT CRAFT INDONESIA)" class="w-full text-xs p-2.5 rounded-lg border border-zinc-200">
+                                    </div>
+
+                                    <div class="p-4 rounded-xl border border-zinc-200">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-extrabold text-xs text-blue-500">DANA Bisnis</span>
+                                            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Aktif</span>
+                                        </div>
+                                        <input type="text" id="setting-dana" value="0812 3456 7890 (PRINT CRAFT OFFICIAL)" class="w-full text-xs p-2.5 rounded-lg border border-zinc-200">
+                                    </div>
+
+                                    <div class="p-4 rounded-xl border border-zinc-200">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-extrabold text-xs text-emerald-600">GoPay Merchant</span>
+                                            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Aktif</span>
+                                        </div>
+                                        <input type="text" id="setting-gopay" value="0812 3456 7890 (PRINT CRAFT MERCH)" class="w-full text-xs p-2.5 rounded-lg border border-zinc-200">
+                                    </div>
+                                </div>
+                                <button onclick="aplikasi.tampilkanNotifikasi('Pengaturan rekening berhasil diperbarui!')" class="mt-4 tombol-gradien px-5 py-2.5 rounded-xl font-bold text-xs">
+                                    Simpan Perubahan Rekening
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- BAGIAN CHAT ADMIN -->
+                        <div id="admin-tab-chatmgt-page" class="tab-panel-admin hidden space-y-4">
+                            <div class="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
+                                <h3 class="text-lg font-bold text-merek-gelap mb-4">Konsol Balas Chat Pelanggan</h3>
+                                <div class="border border-zinc-200 rounded-xl overflow-hidden flex flex-col h-96">
+                                    <div id="admin-chat-feed" class="flex-grow p-4 bg-zinc-50 overflow-y-auto space-y-3 bilah-gulir-kustom text-xs">
+                                        <!-- Percakapan pelanggan dan admin ditampilkan di sini -->
+                                    </div>
+                                    <div class="p-3 bg-white border-t border-zinc-200 flex gap-2">
+                                        <input type="text" id="admin-reply-input" placeholder="Ketik balasan admin..." class="flex-grow text-xs px-3 py-2 border rounded-xl focus:outline-none focus:border-merek-magenta">
+                                        <button onclick="aplikasi.kirimBalasanAdmin()" class="tombol-gradien px-4 py-2 rounded-xl text-xs font-bold">Kirim Balasan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN DETAIL PRODUK DAN FORM KUSTOMISASI -->
+    <!-- Form menampilkan pilihan yang sesuai dengan jenis produk -->
+    <!-- ============================================== -->
+    <div id="customizer-modal" class="fixed inset-0 z-50 latar-belakang-modal hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden border border-zinc-100 flex flex-col max-h-[92vh] animasi-muncul my-auto">
+            
+            <!-- Judul dan tombol tutup jendela kustomisasi -->
+            <div class="px-6 py-4 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/70">
+                <div class="flex items-center gap-2">
+                    <span id="customizer-category-badge" class="px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-wider bg-merek-merah-muda/10 text-merek-magenta">Kustomisasi</span>
+                    <h3 id="customizer-title" class="text-lg font-extrabold text-merek-gelap">Nama Produk</h3>
+                </div>
+                <button onclick="aplikasi.tutupPengaturanProduk()" aria-label="Tutup kustomisasi produk" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center text-zinc-600 transition">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Isi jendela dibagi menjadi pratinjau dan pilihan kustomisasi -->
+            <div class="grid grid-cols-1 md:grid-cols-12 overflow-y-auto bilah-gulir-kustom flex-grow p-6 gap-6">
+                
+                <!-- Pratinjau gambar produk -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="relative w-full aspect-square rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center overflow-hidden group shadow-inner">
+                        <img id="customizer-preview-img" src="assets/gambar/placeholder-produk.svg" alt="Pratinjau produk" class="w-full h-full object-cover transition duration-300">
+                        
+                        <!-- Lapisan warna untuk memperlihatkan pilihan warna -->
+                        <div id="preview-color-overlay" class="absolute inset-0 mix-blend-multiply opacity-25 pointer-events-none transition-all duration-300" style="background-color: transparent;"></div>
+                        
+                        <!-- Pratinjau gambar desain yang diunggah -->
+                        <div id="preview-artwork-container" class="absolute inset-0 flex items-center justify-center pointer-events-none p-8 hidden">
+                            <img id="preview-artwork-img" src="assets/gambar/placeholder-produk.svg" alt="Pratinjau desain yang diunggah" class="max-w-[50%] max-h-[50%] object-contain drop-shadow-md border border-white/50 rounded p-1 bg-white/20">
+                        </div>
+
+                        <div class="absolute bottom-2 left-2 right-2 bg-merek-gelap/75 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-[10px] flex items-center justify-between">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-eye text-merek-jingga"></i> Live Preview</span>
+                            <span id="preview-color-label" class="font-bold text-zinc-300">Warna: Standar</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-pink-50/60 p-3.5 rounded-xl border border-pink-100 text-xs text-merek-gelap space-y-1">
+                        <p class="font-bold flex items-center gap-1.5 text-merek-magenta">
+                            <i class="fa-solid fa-circle-check"></i> Jaminan Cetak Print Craft
+                        </p>
+                        <p class="text-zinc-600 text-[11px] leading-tight">Warna mendekati CMYK 98% akurat. Hasil dicek QC sebelum dikirimkan ke alamat Anda.</p>
+                    </div>
+                </div>
+
+                <!-- Pilihan produk yang berubah sesuai jenis produk -->
+                <div class="md:col-span-7 flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        
+                        <div>
+                            <p id="customizer-base-price" class="text-2xl font-black text-merek-magenta">Rp 0</p>
+                            <p id="customizer-desc" class="text-xs text-zinc-500 mt-1">Deskripsi produk...</p>
+                        </div>
+
+                        <!-- Wadah pilihan kustomisasi yang dibuat oleh JavaScript -->
+                        <div id="dynamic-form-fields" class="space-y-3.5 border-t border-zinc-100 pt-3">
+                            <!-- Pilihan ditampilkan sesuai jenis produk yang dipilih -->
+                        </div>
+
+                    </div>
+
+                    <!-- Ringkasan harga dan tombol tambah ke keranjang -->
+                    <div class="pt-4 border-t border-zinc-100 flex items-center justify-between gap-4 mt-auto">
+                        <div>
+                            <span class="text-[11px] text-zinc-400 font-bold block">Subtotal Estimasi</span>
+                            <span id="customizer-total-calculated" class="text-xl font-extrabold text-merek-gelap">Rp 0</span>
+                        </div>
+                        <button onclick="aplikasi.tambahProdukKeKeranjang()" class="tombol-gradien px-6 py-3 rounded-xl font-bold text-sm shadow-cahaya-merek flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Tambah ke Keranjang
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN PANEL KERANJANG DAN RINGKASAN PESANAN -->
+    <!-- ============================================== -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 latar-belakang-modal hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300">
+            
+            <div class="p-5 border-b border-zinc-100 flex items-center justify-between bg-zinc-50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-merek-magenta text-lg"></i>
+                    <h3 class="font-extrabold text-base text-merek-gelap">Keranjang Belanja (<span id="cart-items-count">0</span>)</h3>
+                </div>
+                <button onclick="aplikasi.tutupKeranjang()" aria-label="Tutup keranjang" class="p-1.5 text-zinc-400 hover:text-zinc-700">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Daftar barang yang sudah dimasukkan ke keranjang -->
+            <div id="cart-items-list" class="flex-grow p-4 overflow-y-auto space-y-3 bilah-gulir-kustom">
+                <!-- Daftar barang atau pesan keranjang kosong ditampilkan oleh JavaScript -->
+            </div>
+
+            <!-- Ringkasan harga dan tombol untuk melanjutkan pembayaran -->
+            <div class="p-5 border-t border-zinc-100 bg-zinc-50 space-y-3">
+                <div class="space-y-1.5 text-xs">
+                    <div class="flex justify-between text-zinc-500">
+                        <span>Total Pesanan</span>
+                        <span id="cart-subtotal" class="font-semibold text-zinc-800">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between text-zinc-500">
+                        <span>Biaya Penanganan / Proofing</span>
+                        <span class="font-semibold text-emerald-600">GRATIS</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-extrabold text-merek-gelap pt-1 border-t border-zinc-200">
+                        <span>Total Pembayaran</span>
+                        <span id="cart-grandtotal" class="text-merek-magenta text-lg font-black">Rp 0</span>
+                    </div>
+                </div>
+
+                <button onclick="aplikasi.lanjutKePembayaran()" id="btn-to-checkout" class="w-full tombol-gradien py-3.5 rounded-xl font-bold text-sm shadow-cahaya-merek flex items-center justify-center gap-2">
+                    <span>Lanjut ke Pembayaran</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN CHECKOUT DAN PILIHAN PEMBAYARAN -->
+    <!-- ============================================== -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 latar-belakang-modal hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-zinc-100 flex flex-col max-h-[92vh] my-auto">
+            
+            <div class="px-6 py-4 border-b border-zinc-100 flex items-center justify-between bg-zinc-50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card text-merek-koral"></i>
+                    <h3 class="text-lg font-extrabold text-merek-gelap">Checkout & Pembayaran</h3>
+                </div>
+                <button onclick="aplikasi.tutupJendelaPembayaran()" aria-label="Tutup checkout" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center text-zinc-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 bilah-gulir-kustom text-xs">
+                
+                <!-- Form alamat pengiriman dan catatan pesanan -->
+                <div class="space-y-3">
+                    <h4 class="font-extrabold text-sm text-merek-gelap flex items-center gap-1.5">
+                        <i class="fa-solid fa-truck-fast text-merek-magenta"></i> 1. Alamat Pengiriman & Catatan
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-zinc-600 mb-1">Nama Penerima</label>
+                            <input type="text" id="checkout-name" value="Ahmad Dhani" class="w-full p-2.5 border rounded-xl focus:border-merek-magenta focus:outline-none text-xs">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-zinc-600 mb-1">No. WhatsApp Aktif</label>
+                            <input type="tel" id="checkout-phone" value="081298765432" class="w-full p-2.5 border rounded-xl focus:border-merek-magenta focus:outline-none text-xs">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-zinc-600 mb-1">Alamat Lengkap</label>
+                        <textarea id="checkout-address" rows="2" class="w-full p-2.5 border rounded-xl focus:border-merek-magenta focus:outline-none text-xs" placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan, kota & kode pos">Jl. Kebon Jeruk Raya No. 42, Jakarta Barat 11530</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-zinc-600 mb-1">Catatan Tambahan untuk Petugas Cetak (Opsional)</label>
+                        <input type="text" id="checkout-notes" class="w-full p-2.5 border rounded-xl focus:border-merek-magenta focus:outline-none text-xs" placeholder="Contoh: Packing bubble tebal untuk kado perusahaan">
+                    </div>
+                </div>
+
+                <!-- Pilihan metode pembayaran yang tersedia -->
+                <div class="space-y-3 pt-3 border-t border-zinc-100">
+                    <h4 class="font-extrabold text-sm text-merek-gelap flex items-center gap-1.5">
+                        <i class="fa-solid fa-wallet text-merek-magenta"></i> 2. Pilih Metode Pembayaran
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="payment-options">
+                        <div onclick="aplikasi.pilihMetodePembayaran('bca')" id="pay-bca" class="cursor-pointer kartu-pembayaran p-3 rounded-xl border-2 border-merek-magenta bg-pink-50/30 flex flex-col items-center text-center">
+                            <span class="font-black text-blue-700 text-sm">BCA</span>
+                            <span class="text-[10px] text-zinc-500 mt-1">Transfer Bank</span>
+                        </div>
+                        <div onclick="aplikasi.pilihMetodePembayaran('mandiri')" id="pay-mandiri" class="cursor-pointer kartu-pembayaran p-3 rounded-xl border-2 border-zinc-200 hover:border-merek-merah-muda flex flex-col items-center text-center">
+                            <span class="font-black text-blue-900 text-sm">MANDIRI</span>
+                            <span class="text-[10px] text-zinc-500 mt-1">Transfer Bank</span>
+                        </div>
+                        <div onclick="aplikasi.pilihMetodePembayaran('dana')" id="pay-dana" class="cursor-pointer kartu-pembayaran p-3 rounded-xl border-2 border-zinc-200 hover:border-merek-merah-muda flex flex-col items-center text-center">
+                            <span class="font-black text-sky-500 text-sm">DANA</span>
+                            <span class="text-[10px] text-zinc-500 mt-1">E-Wallet</span>
+                        </div>
+                        <div onclick="aplikasi.pilihMetodePembayaran('gopay')" id="pay-gopay" class="cursor-pointer kartu-pembayaran p-3 rounded-xl border-2 border-zinc-200 hover:border-merek-merah-muda flex flex-col items-center text-center">
+                            <span class="font-black text-emerald-600 text-sm">GoPay</span>
+                            <span class="text-[10px] text-zinc-500 mt-1">QRIS / E-Wallet</span>
+                        </div>
+                    </div>
+
+                    <!-- Nomor rekening tujuan sesuai metode pembayaran -->
+                    <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 space-y-1" id="payment-destination-box">
+                        <span class="text-[10px] uppercase font-bold text-zinc-400">Tujuan Transfer Resmi:</span>
+                        <p class="font-mono font-bold text-sm text-merek-gelap" id="payment-account-number">BCA 8420-1928-33</p>
+                        <p class="text-[11px] text-zinc-600" id="payment-account-name">a.n PT PRINT CRAFT INDONESIA</p>
+                    </div>
+                </div>
+
+                <!-- Pilihan untuk mengunggah bukti pembayaran -->
+                <div class="space-y-3 pt-3 border-t border-zinc-100">
+                    <h4 class="font-extrabold text-sm text-merek-gelap flex items-center gap-1.5">
+                        <i class="fa-solid fa-receipt text-merek-magenta"></i> 3. Upload Bukti Transfer (Opsional / Bisa Nanti)
+                    </h4>
+                    <div class="border-2 border-dashed border-zinc-200 hover:border-merek-merah-muda rounded-xl p-4 text-center cursor-pointer bg-zinc-50" onclick="document.getElementById('checkout-proof-file').click()">
+                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-zinc-400 mb-1"></i>
+                        <p class="text-xs font-bold text-zinc-700">Pilih Foto Struk / Screenshot Transfer</p>
+                        <p class="text-[10px] text-zinc-400">Format JPG, PNG (Maks 5MB)</p>
+                        <span id="proof-filename" class="text-xs font-bold text-emerald-600 mt-1 block"></span>
+                    </div>
+                    <input type="file" id="checkout-proof-file" class="hidden" accept="image/*" onchange="aplikasi.tanganiBuktiTerpilih(event)">
+                </div>
+
+                <!-- Ringkasan total tagihan -->
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2">
+                    <div class="flex justify-between font-bold">
+                        <span>Total Tagihan Akhir:</span>
+                        <span id="checkout-final-total" class="text-base text-merek-magenta font-black">Rp 0</span>
+                    </div>
+                    <p class="text-[10px] text-zinc-400 leading-tight">Dengan menekan tombol buat pesanan, invoice akan terbit dengan status <span class="text-amber-600 font-bold">Menunggu Pembayaran</span>.</p>
+                </div>
+
+            </div>
+
+            <div class="p-4 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3">
+                <button onclick="aplikasi.tutupJendelaPembayaran()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-zinc-600 hover:bg-zinc-200">Batal</button>
+                <button onclick="aplikasi.buatPesanan()" class="tombol-gradien px-7 py-2.5 rounded-xl text-xs font-bold shadow-cahaya-merek">
+                    Konfirmasi & Buat Pesanan
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN WIDGET LIVE CHAT -->
+    <!-- ============================================== -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <!-- Tombol untuk membuka atau menutup ruang obrolan -->
+        <button onclick="aplikasi.ubahJendelaObrolan()" aria-label="Buka atau tutup chat" class="tombol-gradien w-14 h-14 rounded-full shadow-cahaya-merek flex items-center justify-center text-xl text-white transform hover:scale-105 transition duration-300 relative">
+            <i class="fa-regular fa-comment-dots text-2xl" id="chat-icon-trigger"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-white rounded-full"></span>
+        </button>
+
+        <!-- Jendela percakapan pelanggan dengan admin -->
+        <div id="live-chat-card" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-zinc-100 overflow-hidden flex flex-col h-[460px] animasi-muncul">
+            <!-- Judul dan status layanan chat -->
+            <div class="p-4 bg-gradien-merek text-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-9 h-9 rounded-xl bg-white text-merek-magenta font-black flex items-center justify-center text-sm shadow">
+                            PC
+                        </div>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Customer Support</h4>
+                        <p class="text-[10px] text-white/80">Online • Balas cepat < 5 menit</p>
+                    </div>
+                </div>
+                <button onclick="aplikasi.ubahJendelaObrolan()" aria-label="Tutup chat" class="text-white/80 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Tombol pertanyaan cepat -->
+            <div class="p-2 bg-pink-50/50 border-b border-pink-100 flex gap-1.5 overflow-x-auto text-[10px] bilah-gulir-kustom">
+                <button onclick="aplikasi.kirimPesanCepat('Halo, berapa estimasi pengerjaan sablon kaos?')" class="whitespace-nowrap px-2.5 py-1 bg-white rounded-full border border-pink-200 text-merek-gelap font-semibold hover:border-merek-magenta">Estimasi Kaos?</button>
+                <button onclick="aplikasi.kirimPesanCepat('Bisa minta pricelist grosir tumbler custom?')" class="whitespace-nowrap px-2.5 py-1 bg-white rounded-full border border-pink-200 text-merek-gelap font-semibold hover:border-merek-magenta">Pricelist Grosir</button>
+                <button onclick="aplikasi.kirimPesanCepat('Apakah bisa bantu edit file desain ID Card?')" class="whitespace-nowrap px-2.5 py-1 bg-white rounded-full border border-pink-200 text-merek-gelap font-semibold hover:border-merek-magenta">Bantuan Desain</button>
+            </div>
+
+            <!-- Area untuk menampilkan riwayat pesan -->
+            <div id="chat-messages-container" class="flex-grow p-4 overflow-y-auto space-y-3 bg-zinc-50 text-xs bilah-gulir-kustom">
+                <!-- Pesan percakapan ditampilkan oleh JavaScript -->
+            </div>
+
+            <!-- Kolom untuk menulis dan mengirim pesan -->
+            <div class="p-3 bg-white border-t border-zinc-100 flex gap-2">
+                <input type="text" id="chat-input-field" placeholder="Tulis pertanyaanmu..." onkeypress="if(event.key === 'Enter') aplikasi.kirimPesan()" class="flex-grow text-xs px-3 py-2 bg-zinc-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-merek-magenta">
+                <button onclick="aplikasi.kirimPesan()" aria-label="Kirim pesan" class="tombol-gradien w-9 h-9 rounded-xl flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN FORM MASUK DAN PILIHAN AKUN DEMO -->
+    <!-- ============================================== -->
+    <div id="auth-modal" class="fixed inset-0 z-50 latar-belakang-modal hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl border border-zinc-100 relative">
+            <button onclick="aplikasi.tutupFormMasuk()" aria-label="Tutup form masuk" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-700">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-gradien-merek text-white mx-auto flex items-center justify-center text-xl font-black mb-2 shadow-cahaya-merek">
+                    PC
+                </div>
+                <h3 class="text-xl font-extrabold text-merek-gelap">PRINT CRAFT</h3>
+                <p class="text-xs text-zinc-500">Masuk untuk cek riwayat pesanan & mockup Anda</p>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-zinc-700 mb-1">Email / No. HP</label>
+                    <input type="email" id="login-email" value="ahmad.customer@gmail.com" class="w-full p-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-merek-magenta">
+                </div>
+                <div>
+                    <label class="block font-bold text-zinc-700 mb-1">Password</label>
+                    <input type="password" value="••••••••" class="w-full p-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-merek-magenta">
+                </div>
+                
+                <button onclick="aplikasi.masukSebagaiPelanggan()" class="w-full tombol-gradien py-3 rounded-xl font-bold text-white shadow-cahaya-merek mt-2">
+                    Masuk sebagai Pelanggan
+                </button>
+
+                <div class="relative flex py-2 items-center">
+                    <div class="flex-grow border-t border-zinc-200"></div>
+                    <span class="flex-shrink mx-2 text-[10px] text-zinc-400 uppercase font-bold">atau demo admin</span>
+                    <div class="flex-grow border-t border-zinc-200"></div>
+                </div>
+
+                <button onclick="aplikasi.masukSebagaiAdmin()" class="w-full py-2.5 rounded-xl font-bold bg-zinc-100 hover:bg-zinc-200 text-zinc-700">
+                    <i class="fa-solid fa-lock text-merek-koral mr-1"></i> Masuk Langsung Portal Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WADAH NOTIFIKASI SEMENTARA -->
+    <div id="toast-container" class="fixed top-6 right-6 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- ============================================== -->
+    <!-- BAGIAN KAKI WEBSITE: INFORMASI DAN KONTAK -->
+    <!-- ============================================== -->
+    <footer class="bg-merek-gelap text-white pt-16 pb-12 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-zinc-800">
+                
+                <!-- Informasi singkat tentang Print Craft -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="wadah-logo wadah-logo-footer" aria-label="Area untuk logo asli Print Craft"><i class="fa-regular fa-image" aria-hidden="true"></i></div>
+                        <span class="text-2xl font-black tracking-tight text-white">PRINT<span class="teks-gradien">CRAFT</span></span>
+                    </div>
+                    <p class="text-merek-jingga font-bold text-xs uppercase tracking-widest">"Cetak Kesanmu dalam Warna"</p>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+                        Layanan cetak profesional dan vendor merchandise custom terpercaya. Menghadirkan cetakan tajam, material premium, dan pelayanan tanpa batas untuk personal maupun instansi.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2 text-zinc-400">
+                        <a href="javascript:void(0)" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-merek-magenta hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-merek-magenta hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="javascript:void(0)" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-merek-magenta hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="javascript:void(0)" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-merek-magenta hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Tautan navigasi website -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-300">Navigasi</h4>
+                    <ul class="space-y-2 text-xs text-zinc-400 font-medium">
+                        <li><button onclick="aplikasi.tampilkanHalaman('home')" class="hover:text-merek-merah-muda transition">Beranda</button></li>
+                        <li><button onclick="aplikasi.tampilkanHalaman('catalog')" class="hover:text-merek-merah-muda transition">Katalog Merchandise</button></li>
+                        <li><button onclick="aplikasi.gulirKeBagian('categories')" class="hover:text-merek-merah-muda transition">Kategori Produk</button></li>
+                        <li><button onclick="aplikasi.gulirKeBagian('features')" class="hover:text-merek-merah-muda transition">Tentang Print Craft</button></li>
+                        <li><button onclick="aplikasi.bukaRuangObrolan()" class="hover:text-merek-merah-muda transition">Hubungi CS Kami</button></li>
+                    </ul>
+                </div>
+
+                <!-- Tautan ke kategori produk pilihan -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-300">Kategori</h4>
+                    <ul class="space-y-2 text-xs text-zinc-400 font-medium">
+                        <li><button onclick="aplikasi.saringKatalog('tumbler')" class="hover:text-merek-merah-muda transition">Tumbler Grafir UV</button></li>
+                        <li><button onclick="aplikasi.saringKatalog('idcard')" class="hover:text-merek-merah-muda transition">Kartu ID Card PVC</button></li>
+                        <li><button onclick="aplikasi.saringKatalog('emoney')" class="hover:text-merek-merah-muda transition">E-Money Custom Tol</button></li>
+                        <li><button onclick="aplikasi.saringKatalog('kaos')" class="hover:text-merek-merah-muda transition">Kaos Cotton Combed</button></li>
+                        <li><button onclick="aplikasi.saringKatalog('seragam')" class="hover:text-merek-merah-muda transition">Seragam & PDH Kantor</button></li>
+                    </ul>
+                </div>
+
+                <!-- Alamat workshop dan informasi kontak -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-300">Workshop & Kontak</h4>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <p class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-merek-koral mt-0.5"></i>
+                            <span>Sentra Percetakan Grand Daan Mogot Blok C-12, Jakarta Barat</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-merek-jingga"></i>
+                            <span>(021) 543-9890 / 0812-3456-7890</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-merek-magenta"></i>
+                            <span>order@printcraft.co.id</span>
+                        </p>
+                        <p class="text-[11px] text-zinc-500 pt-1">Senin - Sabtu: 08:30 - 20:00 WIB</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Informasi hak cipta -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
+                <p>© 2025 PRINT CRAFT. Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex items-center space-x-4">
+                    <span>Kebijakan Privasi</span>
+                    <span>•</span>
+                    <span>Syarat & Ketentuan Desain</span>
+                    <span>•</span>
+                    <button onclick="aplikasi.ubahTampilanAdmin()" class="hover:text-merek-koral">Akses Admin</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="js/aplikasi.js" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

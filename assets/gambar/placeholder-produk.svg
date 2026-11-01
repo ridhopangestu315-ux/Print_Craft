@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="judul">
+  <title id="judul">Area gambar produk yang siap diganti</title>
+  <rect width="640" height="480" fill="#f3f0f3"/>
+  <g fill="none" stroke="#c9c0cb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="218" y="145" width="204" height="154" rx="22"/>
+    <circle cx="278" cy="197" r="18"/>
+    <path d="m238 274 58-56 38 34 27-25 41 47"/>
+  </g>
+  <text x="320" y="355" fill="#8d8490" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">Area gambar produk</text>
+</svg>
