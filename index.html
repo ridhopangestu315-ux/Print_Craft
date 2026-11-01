@@ -45,7 +45,16 @@
                 
                 <!-- Logo Print Craft -->
                 <a href="javascript:void(0)" onclick="aplikasi.tampilkanHalaman('home')" class="flex items-center gap-3 group">
-                    <div class="wadah-logo" aria-label="Area untuk logo asli Print Craft"><i class="fa-regular fa-image" aria-hidden="true"></i></div>
+                    <div class="w-11 h-11 rounded-2xl bg-gradien-merek p-0.5 shadow-cahaya-merek flex items-center justify-center transition-transform group-hover:scale-105" aria-label="Logo Print Craft">
+                        <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden">
+                            <div class="relative w-7 h-7 flex items-center justify-center" aria-hidden="true">
+                                <span class="absolute w-5 h-5 rounded-full bg-merek-magenta opacity-80 -top-1 -left-1"></span>
+                                <span class="absolute w-5 h-5 rounded-full bg-merek-koral opacity-80 -top-1 -right-1 mix-blend-multiply"></span>
+                                <span class="absolute w-5 h-5 rounded-full bg-merek-jingga opacity-80 -bottom-1 left-0.5 mix-blend-multiply"></span>
+                                <span class="relative z-10 text-[11px] font-black tracking-tighter text-white">PC</span>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <span class="text-2xl font-extrabold tracking-tight text-merek-gelap flex items-center gap-1">
                             PRINT<span class="teks-gradien">CRAFT</span>
@@ -153,21 +162,6 @@
                                 </button>
                             </div>
 
-                            <!-- Ringkasan jumlah produk, kepuasan pelanggan, dan layanan -->
-                            <div class="pt-8 border-t border-zinc-100 grid grid-cols-3 gap-4 text-center lg:text-left">
-                                <div>
-                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">50.000+</h4>
-                                    <p class="text-xs text-zinc-500 font-medium">Produk Dicetak</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">99.8%</h4>
-                                    <p class="text-xs text-zinc-500 font-medium">Klien Puas</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl sm:text-2xl font-extrabold text-merek-gelap">1 Hari</h4>
-                                    <p class="text-xs text-zinc-500 font-medium">Layanan Express</p>
-                                </div>
-                            </div>
                         </div>
 
                         <!-- Contoh tampilan produk unggulan di sisi beranda -->
@@ -1132,7 +1126,7 @@
                 <!-- Informasi singkat tentang Print Craft -->
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center gap-2.5">
-                        <div class="wadah-logo wadah-logo-footer" aria-label="Area untuk logo asli Print Craft"><i class="fa-regular fa-image" aria-hidden="true"></i></div>
+                        <div class="w-9 h-9 rounded-xl bg-gradien-merek flex items-center justify-center text-white font-black text-sm" aria-label="Logo Print Craft">PC</div>
                         <span class="text-2xl font-black tracking-tight text-white">PRINT<span class="teks-gradien">CRAFT</span></span>
                     </div>
                     <p class="text-merek-jingga font-bold text-xs uppercase tracking-widest">"Cetak Kesanmu dalam Warna"</p>
