@@ -110,6 +110,53 @@ header nav button:hover { color: var(--warna-magenta) !important; }
 .teks-gradien-craft { background-image: var(--gradien-craft); }
 .teks-gradien-slogan { background-image: var(--gradien-slogan); }
 
+/* Wordmark Print Craft mengikuti huruf dan gradasi pada logo referensi. */
+.logo-wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: .2em;
+    width: max-content;
+    max-width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900;
+    letter-spacing: -.035em;
+    line-height: 1;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+.logo-wordmark-header { font-size: 1.58rem; }
+.logo-wordmark-footer { font-size: 1.8rem; }
+.logo-wordmark-auth { justify-content: center; margin-inline: auto; font-size: 1.3rem; }
+
+.logo-tagline {
+    width: max-content;
+    max-width: 100%;
+    margin-bottom: 0;
+    line-height: 1.25;
+    text-transform: none !important;
+}
+
+.logo-tagline-header {
+    margin-top: -2px;
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+.logo-tagline-footer {
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.logo-tagline .teks-gradien-slogan { filter: drop-shadow(0 1px 1px rgba(225, 29, 116, .2)); }
+
+@media (max-width: 639px) {
+    .logo-wordmark-header { gap: .14em; font-size: 1rem; }
+    .logo-tagline-header { font-size: .43rem; letter-spacing: .025em; }
+}
+
 .tombol-gradien {
     border: 0;
     border-radius: 13px;
