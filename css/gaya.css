@@ -1061,3 +1061,21 @@ footer .pt-8 { padding-top: 30px !important; }
     #view-admin-dashboard #admin-tab-overview > .grid { grid-template-columns: 1fr; }
 }
 
+/* Avatar akun harus tetap terlihat utuh saat ruang navbar menyempit. */
+header #user-nav-action .foto-profil-akun {
+    display: block;
+    flex: 0 0 34px;
+    width: 34px !important;
+    height: 34px !important;
+    max-width: none;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+}
+
+@media (max-width: 767px) {
+    header #user-nav-action { display: block; flex: 0 0 auto; visibility: visible; }
+    header #user-nav-action button { display: flex !important; min-width: 42px; min-height: 42px; align-items: center; justify-content: center; padding: 4px !important; }
+    header #user-nav-action .foto-profil-akun { flex-basis: 34px; width: 34px !important; height: 34px !important; visibility: visible; opacity: 1; }
+}
+
