@@ -445,7 +445,12 @@ body > div:first-child > .max-w-7xl { max-width: 1520px; }
 }
 
 /* Efek hover dan status terpilih pada tujuh kartu kategori. */
-#categories > .max-w-7xl { max-width: 1520px; }
+#categories > .max-w-7xl {
+    width: min(calc(100% - 48px), 1280px) !important;
+    max-width: 1280px !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+}
 #categories .grid.grid-cols-2 { gap: 20px; }
 
 #categories .kartu-kategori {
