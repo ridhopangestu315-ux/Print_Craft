@@ -1,15 +1,18 @@
 ﻿:root {
-    --warna-magenta: #d51b68;
-    --warna-pink: #f43f78;
-    --warna-coral: #f45c61;
-    --warna-jingga: #f5824a;
-    --warna-charcoal: #222027;
-    --warna-teks: #292630;
-    --warna-redup: #77737e;
-    --warna-latar: #fbf9fb;
-    --warna-garis: #eee9ef;
-    --bayangan-kartu: 0 18px 44px rgba(37, 24, 39, .08);
-    --bayangan-ringan: 0 8px 24px rgba(37, 24, 39, .06);
+    --warna-magenta: #e11d74;
+    --warna-pink: #f43f5e;
+    --warna-coral: #fa4d56;
+    --warna-jingga: #ff7844;
+    --warna-gelap: #18181b;
+    --warna-charcoal: #27272a;
+    --warna-teks: #18181b;
+    --warna-redup: #71717a;
+    --warna-latar: #fafafa;
+    --warna-garis: #e4e4e7;
+    --gradien-merek: linear-gradient(135deg, #e11d74 0%, #fa4d56 50%, #ff7844 100%);
+    --gradien-merek-hover: linear-gradient(135deg, #c2185b 0%, #e11d74 50%, #f97316 100%);
+    --bayangan-kartu: 0 4px 20px -2px rgba(0, 0, 0, .05);
+    --bayangan-ringan: 0 8px 24px rgba(24, 24, 27, .06);
 }
 
 * { box-sizing: border-box; }
@@ -31,7 +34,7 @@ img { max-width: 100%; }
 
 /* Pengumuman layanan */
 body > div:first-child {
-    background: var(--warna-charcoal) !important;
+    background: var(--warna-gelap) !important;
     letter-spacing: .01em;
 }
 
@@ -66,7 +69,7 @@ header nav button:hover { color: var(--warna-magenta) !important; }
 .wadah-logo-footer { width: 38px; height: 38px; border-radius: 12px; }
 
 .teks-gradien {
-    background: linear-gradient(110deg, var(--warna-magenta), var(--warna-coral) 58%, var(--warna-jingga));
+    background: var(--gradien-merek);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -75,15 +78,14 @@ header nav button:hover { color: var(--warna-magenta) !important; }
 .tombol-gradien {
     border: 0;
     border-radius: 13px;
-    background: linear-gradient(110deg, var(--warna-magenta), var(--warna-coral) 58%, var(--warna-jingga));
-    box-shadow: 0 9px 22px rgba(213, 27, 104, .2);
+    background: var(--gradien-merek);
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 116, .3);
     color: #fff;
     transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
 
 .tombol-gradien:hover {
-    box-shadow: 0 13px 28px rgba(213, 27, 104, .26);
-    filter: saturate(1.06);
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 116, .4);
     transform: translateY(-2px);
 }
 
@@ -201,7 +203,7 @@ header nav button:hover { color: var(--warna-magenta) !important; }
 .banner-promosi {
     overflow: hidden;
     border-radius: 28px !important;
-    background: linear-gradient(115deg, #c91562 0%, #e63870 48%, #f5824a 100%) !important;
+    background: var(--gradien-merek) !important;
     box-shadow: 0 20px 48px rgba(207, 31, 103, .2) !important;
 }
 
@@ -260,7 +262,7 @@ input:focus, textarea:focus, select:focus { outline-color: rgba(213, 27, 104, .3
 .bilah-gulir-kustom::-webkit-scrollbar-thumb:hover { background: #aaa0ac; }
 
 /* Bagian kaki website */
-footer { background: #211f26 !important; }
+footer { background: var(--warna-gelap) !important; }
 footer a, footer button { transition: color .18s ease; }
 
 @media (max-width: 1023px) {
@@ -287,5 +289,141 @@ footer a, footer button { transition: color .18s ease; }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Tata letak katalog diselaraskan dengan screenshot referensi. */
+header.sticky {
+    top: 0;
+    min-height: 100px;
+    box-shadow: none;
+}
+
+header .h-20 { height: 100px; }
+header > div.max-w-7xl { max-width: 1520px; }
+header nav { gap: clamp(1.1rem, 2vw, 2.5rem) !important; }
+header nav button { font-size: 1rem; }
+header nav button.navigasi-aktif,
+header nav button.text-merek-magenta { color: var(--warna-magenta) !important; }
+header nav #nav-home.navigasi-aktif:not(.text-merek-magenta) { color: #3f3f46 !important; }
+
+body > div:first-child { padding-block: 15px; }
+body > div:first-child > .max-w-7xl { max-width: 1520px; }
+
+#view-catalog {
+    min-height: calc(100vh - 142px);
+    padding: 52px 24px 72px !important;
+    background: #fafafa !important;
+}
+
+#view-catalog > .max-w-7xl {
+    width: 100%;
+    max-width: 1520px;
+}
+
+#view-catalog .mb-8.flex {
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 38px !important;
+}
+
+#view-catalog .mb-8.flex > div:first-child { max-width: 590px; }
+#view-catalog .mb-8.flex > div:first-child > a { margin-bottom: 10px; font-size: .95rem; }
+
+#view-catalog h1 {
+    max-width: 590px;
+    margin: 0;
+    color: var(--warna-gelap) !important;
+    font-size: clamp(2rem, 2.3vw, 2.45rem) !important;
+    font-weight: 800;
+    letter-spacing: -.035em;
+    line-height: 1.12;
+}
+
+#view-catalog .mb-8.flex > div:first-child > p {
+    margin-top: 7px;
+    color: var(--warna-redup) !important;
+    font-size: 1rem;
+}
+
+#view-catalog .tombol-filter-katalog {
+    min-height: 42px;
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border: 1px solid #e4e4e7;
+    border-radius: 15px !important;
+    background: #fff !important;
+    color: #3f3f46 !important;
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#view-catalog .tombol-filter-katalog.bg-merek-magenta {
+    border-color: var(--warna-magenta);
+    background: var(--warna-magenta) !important;
+    color: #fff !important;
+}
+
+#filter-idcard, #filter-emoney { width: 82px; white-space: normal; }
+#view-catalog .flex.items-center.gap-2.overflow-x-auto { max-width: 100%; }
+
+#view-catalog #catalog-product-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+}
+
+#view-catalog .kartu-produk {
+    overflow: hidden;
+    border: 1px solid #e4e4e7 !important;
+    border-radius: 20px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 8px rgba(24, 24, 27, .025);
+}
+
+#view-catalog .kartu-produk > div:first-child {
+    aspect-ratio: 1 / 1;
+    background: #f4f4f5 !important;
+}
+
+#view-catalog .kartu-produk > div:first-child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#view-catalog .kartu-produk > div:nth-child(2) { padding: 20px 24px 22px !important; }
+#view-catalog .kartu-produk h3 { color: var(--warna-gelap) !important; font-size: 1.1rem !important; }
+#view-catalog .kartu-produk p { color: var(--warna-redup) !important; font-size: .9rem !important; line-height: 1.55; }
+#view-catalog .kartu-produk .border-t { border-color: #f4f4f5 !important; }
+#view-catalog .kartu-produk .text-merek-magenta { color: var(--warna-magenta) !important; }
+
+@media (max-width: 1100px) {
+    #view-catalog .mb-8.flex { flex-direction: column; align-items: stretch; }
+    #view-catalog .mb-8.flex > div:first-child { max-width: none; }
+    #view-catalog #catalog-product-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+    body > div:first-child { padding-block: 8px; }
+    header.sticky { min-height: 72px; }
+    header .h-20 { height: 72px; }
+    #view-catalog { padding: 28px 16px 48px !important; }
+    #view-catalog .mb-8.flex { margin-bottom: 24px !important; }
+    #view-catalog #catalog-product-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    #view-catalog .kartu-produk > div:nth-child(2) { padding: 14px !important; }
+    #view-catalog .kartu-produk h3 { font-size: .9rem !important; }
+    #view-catalog .kartu-produk p { font-size: .78rem !important; }
+    #view-catalog .kartu-produk .text-merek-magenta { font-size: .9rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #view-catalog #catalog-product-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+    #view-catalog #catalog-product-list { grid-template-columns: 1fr; }
+    #view-catalog .mb-8.flex > div:first-child > p { font-size: .9rem; }
+    #view-catalog .kartu-produk > div:nth-child(2) { padding: 16px !important; }
 }
 
