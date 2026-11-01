@@ -9,6 +9,9 @@
     --warna-redup: #71717a;
     --warna-latar: #fafafa;
     --warna-garis: #e4e4e7;
+    --gradien-print: linear-gradient(90deg, #e11d74 0%, #f43f5e 100%);
+    --gradien-craft: linear-gradient(90deg, #f43f5e 0%, #fa4d56 52%, #ff7844 100%);
+    --gradien-slogan: linear-gradient(90deg, #e11d74 0%, #f43f5e 34%, #fa4d56 68%, #ff7844 100%);
     --gradien-merek: linear-gradient(135deg, #e11d74 0%, #fa4d56 50%, #ff7844 100%);
     --gradien-merek-hover: linear-gradient(135deg, #c2185b 0%, #e11d74 50%, #f97316 100%);
     --bayangan-kartu: 0 4px 20px -2px rgba(0, 0, 0, .05);
@@ -69,11 +72,25 @@ header nav button:hover { color: var(--warna-magenta) !important; }
 .wadah-logo-footer { width: 38px; height: 38px; border-radius: 12px; }
 
 .teks-gradien {
-    background: var(--gradien-merek);
+    background: var(--gradien-craft);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.teks-gradien-print,
+.teks-gradien-craft,
+.teks-gradien-slogan {
+    display: inline-block;
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.teks-gradien-print { background-image: var(--gradien-print); }
+.teks-gradien-craft { background-image: var(--gradien-craft); }
+.teks-gradien-slogan { background-image: var(--gradien-slogan); }
 
 .tombol-gradien {
     border: 0;
