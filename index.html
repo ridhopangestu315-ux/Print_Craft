@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -535,8 +535,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
                     
                     <!-- Menu samping untuk memilih bagian dashboard admin -->
-                    <div class="lg:col-span-3">
-                        <div class="bg-white rounded-2xl p-4 border border-zinc-200 shadow-sm space-y-1">
+                    <div class="lg:col-span-3 admin-sidebar-container">
+                        <button type="button" id="admin-sidebar-toggle" aria-controls="admin-sidebar-menu" aria-expanded="false" onclick="aplikasi.ubahMenuAdminPonsel()" class="admin-sidebar-toggle">
+                            <span><i class="fa-solid fa-bars mr-2"></i>Menu Admin</span>
+                            <i class="fa-solid fa-chevron-down admin-sidebar-toggle-icon"></i>
+                        </button>
+                        <div id="admin-sidebar-menu" class="bg-white rounded-2xl p-4 border border-zinc-200 shadow-sm space-y-1">
                             <button onclick="aplikasi.ubahTabAdmin('overview')" id="adm-tab-overview" class="admin-menu-button w-full text-left px-4 py-3 rounded-xl font-bold text-sm bg-gradien-merek text-white flex items-center gap-3">
                                 <span class="admin-menu-icon"><i class="fa-solid fa-chart-pie"></i></span><span class="admin-menu-label">Ringkasan & Statistik</span>
                             </button>

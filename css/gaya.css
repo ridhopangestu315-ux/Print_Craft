@@ -880,3 +880,178 @@ footer .pt-8 { padding-top: 30px !important; }
     #view-admin-dashboard .admin-menu-icon { flex-basis: 22px; width: 22px; }
 }
 
+/* Penyesuaian responsif lintas halaman, tanpa mengubah aturan desktop. */
+.admin-sidebar-toggle { display: none; }
+
+@media (max-width: 1023px) {
+    .admin-sidebar-container { min-width: 0; }
+    .admin-sidebar-toggle {
+        display: flex;
+        width: 100%;
+        min-height: 48px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        border: 1px solid #e4e4e7;
+        border-radius: 14px;
+        background: #fff;
+        color: #27272a;
+        font-size: .9rem;
+        font-weight: 700;
+        box-shadow: 0 2px 5px rgba(24, 24, 27, .04);
+    }
+    #admin-sidebar-menu { display: none !important; margin-top: 10px; }
+    .admin-sidebar-terbuka #admin-sidebar-menu {
+        display: flex !important;
+        flex-direction: column;
+    }
+    .admin-sidebar-terbuka .admin-sidebar-toggle-icon { transform: rotate(180deg); }
+}
+
+@media (max-width: 767px) {
+    body { min-width: 320px; }
+
+    body > div:first-child { min-height: 38px; }
+    body > div:first-child .max-w-7xl { gap: 8px; }
+    body > div:first-child .max-w-7xl > div:first-child { min-width: 0; gap: 8px; }
+    body > div:first-child .max-w-7xl > div:first-child > span:last-child { font-size: .68rem; }
+
+    header .max-w-7xl { padding-inline: 12px !important; }
+    header .h-20 { display: flex !important; justify-content: space-between; gap: 6px; }
+    header a.group { min-width: 0; max-width: calc(100% - 132px); flex: 0 1 auto; gap: 8px !important; }
+    header a.group > div { min-width: 0; }
+    header a.group > div > span { font-size: 1rem !important; line-height: 1.15; }
+    header a.group p { font-size: 7px !important; letter-spacing: .04em; white-space: nowrap; }
+    header .flex.items-center.space-x-3 { display: flex !important; flex: 0 0 auto; gap: 4px; margin-left: auto; }
+    header .flex.items-center.space-x-3 > * + * { margin-left: 0 !important; }
+    header #user-nav-action button { min-height: 40px; padding: 0 10px !important; border-radius: 12px !important; }
+    header #user-nav-action button i { margin: 0; }
+    header #user-nav-action button span { display: none; }
+    header button[aria-label="Keranjang Belanja"] { min-width: 38px; min-height: 40px; padding: 6px !important; }
+    header button[aria-label="Buka menu navigasi"] { min-width: 40px; min-height: 40px; padding: 6px !important; }
+    #mobile-menu { max-height: calc(100dvh - 72px); overflow-y: auto; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+
+    #view-home > .bagian-pembuka { padding: 42px 0 !important; }
+    .bagian-pembuka h1 { width: 100%; max-width: 18ch; margin-inline: auto; overflow-wrap: anywhere; font-size: clamp(2rem, 9vw, 2.75rem) !important; line-height: 1.12 !important; }
+    .bagian-pembuka .inline-flex.rounded-full { max-width: 100%; justify-content: center; white-space: normal; }
+    .bagian-pembuka p { font-size: .95rem !important; }
+    .bagian-pembuka .grid.grid-cols-3 { gap: 8px; }
+    .bagian-pembuka .grid.grid-cols-3 h4 { font-size: 1.15rem; }
+    .bagian-pembuka .grid.grid-cols-3 p { font-size: .68rem !important; }
+    .bagian-pembuka .grid.grid-cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .bagian-pembuka .grid.grid-cols-2 > div { min-width: 0; }
+    #categories, #featured-products, #features { padding-block: 42px !important; }
+    #categories > .max-w-7xl { width: calc(100% - 32px) !important; }
+    #categories > .max-w-7xl > div:first-child { gap: 12px; margin-bottom: 24px !important; }
+    #categories .grid.grid-cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    #categories .kartu-kategori { min-width: 0; min-height: 142px; padding: 12px !important; }
+    #categories .kartu-kategori h3 { overflow-wrap: anywhere; }
+    #featured-products > .max-w-7xl,
+    #features > .max-w-7xl { padding-inline: 16px; }
+    #featured-product-list { gap: 14px; }
+    .kartu-produk { min-width: 0; }
+    .kartu-produk > div:nth-child(2) { min-width: 0; }
+    .kartu-produk h3 { overflow-wrap: anywhere; }
+    .kartu-produk > div:nth-child(2) > div:last-child { gap: 6px; }
+    .kartu-produk > div:nth-child(2) > div:last-child > div:last-child { gap: 5px; }
+    .kartu-produk > div:nth-child(2) > div:last-child button { min-height: 40px; padding-inline: 9px !important; }
+
+    #view-catalog .max-w-7xl { min-width: 0; }
+    #view-catalog h1 { font-size: clamp(1.45rem, 6vw, 1.9rem) !important; line-height: 1.2; }
+    #view-catalog .flex.items-center.gap-2.overflow-x-auto { width: 100%; padding-bottom: 10px; }
+    #view-catalog .tombol-filter-katalog { min-height: 44px; }
+
+    #customizer-modal { align-items: flex-start; padding: 8px !important; }
+    #customizer-modal > div { width: 100%; max-height: calc(100dvh - 16px); margin-block: auto; }
+    #customizer-modal > div > div:first-child { gap: 8px; padding: 14px 16px !important; }
+    #customizer-title { min-width: 0; font-size: 1rem; }
+    #customizer-modal > div > div:nth-child(2) { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 16px !important; }
+    #customizer-preview-img { aspect-ratio: 1 / 1; }
+    #dynamic-form-fields input:not([type="file"]),
+    #dynamic-form-fields select,
+    #dynamic-form-fields textarea { min-height: 44px; max-width: 100%; font-size:  .9rem !important; }
+    #dynamic-form-fields input[type="number"] { width: 100% !important; }
+    #dynamic-form-fields input[type="file"] { width: 100%; min-height: 44px; font-size: .75rem; }
+    #customizer-modal > div > div:nth-child(2) > div:last-child > div:last-child { align-items: stretch; flex-direction: column; }
+    #customizer-modal > div > div:nth-child(2) > div:last-child > div:last-child button { min-height: 48px; justify-content: center; }
+
+    #cart-drawer > div { width: 100%; max-width: 100%; padding-bottom: env(safe-area-inset-bottom); }
+    #cart-items-list { min-width: 0; }
+    #cart-drawer .p-5 { padding: 16px !important; }
+    #btn-to-checkout { min-height: 48px; }
+
+    #checkout-modal { align-items: flex-start; padding: 8px !important; }
+    #checkout-modal > div { width: 100%; max-height: calc(100dvh - 16px); margin-block: auto; }
+    #checkout-modal > div > div:nth-child(2) { padding: 16px !important; }
+    #checkout-modal input, #checkout-modal textarea, #checkout-modal select { min-height: 44px; font-size: .9rem !important; }
+    #checkout-modal input[type="file"] { min-height: 44px; }
+    #checkout-modal > div > div:last-child { padding: 12px !important; }
+    #checkout-modal > div > div:last-child button { min-height: 44px; padding-inline: 14px !important; }
+
+    #auth-modal { padding: 12px !important; }
+    #auth-modal > div { max-height: calc(100dvh - 24px); overflow-y: auto; padding: 22px !important; }
+    #auth-modal input { min-height: 44px; font-size: .9rem !important; }
+    #auth-modal button:not([aria-label]) { min-height: 44px; }
+
+    #view-customer-dashboard > .max-w-7xl { padding-inline: 16px; }
+    #view-customer-dashboard > .max-w-7xl > div:first-child { padding: 16px !important; }
+    #view-customer-dashboard > .max-w-7xl > div:first-child > div:last-child { flex-wrap: wrap; }
+    #view-customer-dashboard > .max-w-7xl > .flex.border-b { gap: 18px; overflow-x: auto; white-space: nowrap; }
+    #view-customer-dashboard > .max-w-7xl > .flex.border-b button { min-height: 44px; flex: 0 0 auto; }
+
+    #view-admin-dashboard > .max-w-7xl { width: 100%; }
+    #view-admin-dashboard > .max-w-7xl > .flex.items-center.justify-between h1 { font-size: clamp(1.25rem, 5vw, 1.65rem) !important; }
+    #view-admin-dashboard .admin-menu-button { min-height: 48px; }
+    #view-admin-dashboard .admin-menu-label { overflow-wrap: anywhere; }
+    #view-admin-dashboard #admin-tab-overview > .grid > div { min-width: 0; }
+    #view-admin-dashboard #admin-tab-overview > .grid > div > p { overflow-wrap: anywhere; }
+    #view-admin-dashboard .overflow-x-auto { max-width: 100%; overscroll-behavior-x: contain; }
+    #view-admin-dashboard table { width: max-content; }
+    #view-admin-dashboard .tab-panel-admin > div { min-width: 0; }
+    #admin-verification-queue > div { flex-wrap: wrap; gap: 12px; }
+
+    #live-chat-card {
+        position: fixed;
+        right: 12px;
+        bottom: 82px;
+        width: min(calc(100vw - 24px), 390px);
+        height: min(460px, calc(100dvh - 110px));
+    }
+    body > div.fixed.bottom-6.right-6 { right: 16px; bottom: 16px; }
+    body > div.fixed.bottom-6.right-6 > button { min-width: 52px; min-height: 52px; }
+
+    main #view-home > section.py-12 { padding: 30px 16px !important; }
+    .banner-promosi { width: 100%; min-width: 0; padding: 24px 20px !important; }
+    .banner-promosi h3 { overflow-wrap: anywhere; }
+    .banner-promosi > div:last-child button { white-space: normal; }
+
+    footer > .max-w-7xl { padding-inline: 16px; }
+    footer .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px !important; }
+    footer .grid > div:first-child,
+    footer .grid > div:last-child { grid-column: 1 / -1; }
+    footer .grid > div { min-width: 0; }
+    footer .grid li,
+    footer .grid p,
+    footer .grid span { overflow-wrap: anywhere; }
+    footer .pt-8 { align-items: flex-start; }
+}
+
+@media (max-width: 420px) {
+    header a.group p { max-width: 138px; overflow: hidden; text-overflow: ellipsis; }
+    header #user-nav-action button { min-width: 38px; padding-inline: 8px !important; }
+    #view-catalog #catalog-product-list { grid-template-columns: 1fr; }
+    #featured-product-list { grid-template-columns: 1fr; }
+    #view-admin-dashboard #admin-tab-overview > .grid { grid-template-columns: 1fr; }
+    footer .grid { grid-template-columns: 1fr; }
+    footer .grid > div:first-child,
+    footer .grid > div:last-child { grid-column: auto; }
+}
+
+@media (max-width: 360px) {
+    header a.group { gap: 6px !important; }
+    header a.group > div > span { font-size: .92rem !important; }
+    header a.group p { max-width: 116px; }
+    header .flex.items-center.space-x-3 { gap: 2px; }
+    #view-admin-dashboard #admin-tab-overview > .grid { grid-template-columns: 1fr; }
+}
+

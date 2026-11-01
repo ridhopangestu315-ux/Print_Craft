@@ -986,6 +986,15 @@
             },
 
             // --- ADMIN DASHBOARD ---
+            ubahMenuAdminPonsel: function() {
+                const wadahMenu = document.querySelector('.admin-sidebar-container');
+                const tombolMenu = document.getElementById('admin-sidebar-toggle');
+                if (!wadahMenu || !tombolMenu) return;
+
+                const menuTerbuka = wadahMenu.classList.toggle('admin-sidebar-terbuka');
+                tombolMenu.setAttribute('aria-expanded', String(menuTerbuka));
+            },
+
             ubahTabAdmin: function(kunciTab) {
                 document.querySelectorAll('.tab-panel-admin').forEach(elemen => elemen.classList.add('hidden'));
                 const bagianAktif = document.getElementById('admin-tab-' + (kunciTab === 'overview' ? 'overview' : kunciTab + '-page'));
@@ -1003,6 +1012,11 @@
                         }
                     }
                 });
+
+                const wadahMenuPonsel = document.querySelector('.admin-sidebar-container');
+                const tombolMenuPonsel = document.getElementById('admin-sidebar-toggle');
+                if (wadahMenuPonsel) wadahMenuPonsel.classList.remove('admin-sidebar-terbuka');
+                if (tombolMenuPonsel) tombolMenuPonsel.setAttribute('aria-expanded', 'false');
 
                 if (kunciTab === 'chatmgt') {
                     this.tampilkanPesanAdmin();
